@@ -12,6 +12,7 @@ router.get('/', function (req, res) {
 
 // import event controller
 var eventController = require('./eventController');
+var tagController = require('./tagController');
 
 // event routes
 router.route('/events')
@@ -23,6 +24,17 @@ router.route('/events/:event_id')
 .patch(eventController.update)
 .put(eventController.update)
 .delete(eventController.delete);
+
+// tag routes
+router.route('/tags')
+.get(tagController.index)
+.post(tagController.new);
+
+router.route('/tags/:tag_id')
+.get(tagController.view)
+.patch(tagController.update)
+.put(tagController.update)
+.delete(tagController.delete);
 
 // export API routes
 module.exports = router;
