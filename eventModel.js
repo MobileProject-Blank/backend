@@ -15,10 +15,7 @@ var eventSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  startTime: {
-    type: String,
-    required: true
-  },
+  startTime: String,
   endTime: String,
   create_date: {
     type: Date,
