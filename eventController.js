@@ -70,7 +70,7 @@ exports.update = function (req, res) {
       if(err)
       res.json(err);
       res.json({
-        message: 'event info updated',
+        message: 'Event info updated',
         data: event
       });
     });
