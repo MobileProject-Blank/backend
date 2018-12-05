@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 // setup schema
 var tagSchema = mongoose.Schema({
-  title: {
+  name: {
     type: String,
     required: true
   },

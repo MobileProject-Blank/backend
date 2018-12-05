@@ -7,12 +7,12 @@ exports.index = function (req, res) {
   Tag.get(function (err, tags) {
     if(err) {
       res.json({
-        status: "error",
+        status: "500",
         message: err,
       });
     }
     res.json({
-      status: "success",
+      status: "200",
       message: "Tags retrieved successfully",
       data: tags
     });
@@ -23,7 +23,7 @@ exports.index = function (req, res) {
 exports.new = function (req, res) {
   var tag = new Tag();
   // tag.id = req.body.id;
-  tag.title = req.body.title ? req.body.title : tag.title;
+  tag.name = req.body.name ? req.body.name : tag.name;
 
   // save the tag and check for errors
   tag.save(function (err) {
@@ -55,7 +55,7 @@ exports.update = function (req, res) {
     if (err)
     res.send(err);
 
-    tag.title = req.body.title ? req.body.title : tag.title;
+    tag.name = req.body.name ? req.body.name : tag.name;
 
     // save the tag and check for errors
     tag.save(function (err) {
@@ -77,7 +77,7 @@ exports.delete = function (req, res) {
     if (err)
     res.send(err);
     res.json({
-      status:"success",
+      status:"200",
       message: 'Tag deleted'
     });
   });

@@ -13,6 +13,7 @@ router.get('/', function (req, res) {
 // import event controller
 var eventController = require('./eventController');
 var tagController = require('./tagController');
+var guidelineController = require('./guidelineController');
 
 // event routes
 router.route('/events')
@@ -35,6 +36,17 @@ router.route('/tags/:tag_id')
 .patch(tagController.update)
 .put(tagController.update)
 .delete(tagController.delete);
+
+// guideline routes
+router.route('/guidelines')
+.get(guidelineController.index)
+.post(guidelineController.new);
+
+router.route('/guidelines/:guideline_id')
+.get(guidelineController.view)
+.patch(guidelineController.update)
+.put(guidelineController.update)
+.delete(guidelineController.delete);
 
 // export API routes
 module.exports = router;

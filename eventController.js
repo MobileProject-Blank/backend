@@ -7,12 +7,12 @@ exports.index = function (req, res) {
   Event.get(function (err, events) {
     if(err) {
       res.json({
-        status: "error",
+        status: "500",
         message: err,
       });
     }
     res.json({
-      status: "success",
+      status: "200",
       message: "Events retrieved successfully",
       data: events
     });
@@ -85,7 +85,7 @@ exports.delete = function (req, res) {
     if (err)
     res.send(err);
     res.json({
-      status:"success",
+      status:"200",
       message: 'Event deleted'
     });
   });
