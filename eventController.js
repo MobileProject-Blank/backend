@@ -28,6 +28,8 @@ exports.new = function (req, res) {
   event.description = req.body.description;
   event.startTime = req.body.startTime;
   event.endTime = req.body.endTime;
+  event.tag = req.body.tag;
+  event.link = req.body.link;
 
   // save the event and check for errors
   event.save(function (err) {
