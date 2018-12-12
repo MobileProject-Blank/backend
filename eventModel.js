@@ -17,6 +17,8 @@ var eventSchema = mongoose.Schema({
   },
   startTime: String,
   endTime: String,
+  tag: String,
+  link: String,
   create_date: {
     type: Date,
     default: Date.now

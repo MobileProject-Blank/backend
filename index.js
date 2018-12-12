@@ -1,9 +1,8 @@
 
-// import express
-let express = require('express');
-// import Body parser
+// import express, Body parser and Mongoose
+let express = require('express')
 let bodyParser = require('body-parser');
-// import Mongoose
+
 let mongoose = require('mongoose');
 //ini the app
 let app = express();
@@ -17,15 +16,27 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-// connect to Mongoose and set connection variable
+
 mongoose.connect('mongodb://localhost/blank_backend');
 
 var db = mongoose.connection;
 // Setup server port
 var port = process.env.PORT || 8080;
 
-// Send msg for default URL
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
 app.get('/', (req, res) => res.send('Hello there!'));
+
+app.all('/events', function (req, res, next) {
+  console.log('Accessing events')
+  next()
+})
 
 // use API routes in the app
 app.use('/api', apiRoutes)
