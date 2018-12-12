@@ -1,11 +1,9 @@
-
-// import guideline model
 Guideline = require('./guidelineModel');
 
 // Handle index actions
 exports.index = function (req, res) {
   Guideline.get(function (err, guidelines) {
-    if(err) {
+    if (err) {
       res.json({
         status: "500",
         message: err,
@@ -22,7 +20,6 @@ exports.index = function (req, res) {
 // handle create guideline actions
 exports.new = function (req, res) {
   var guideline = new Guideline();
-  // guideline.id = req.body.id;
   guideline.title = req.body.title ? req.body.title : guideline.title;
   guideline.description = req.body.description;
 
@@ -41,7 +38,7 @@ exports.new = function (req, res) {
 exports.view = function (req, res) {
   Guideline.findById(req.params.guideline_id, function (err, guideline) {
     if (err)
-    res.send(err);
+      res.send(err);
     res.json({
       message: 'Guideline details loading..',
       data: guideline
@@ -49,20 +46,20 @@ exports.view = function (req, res) {
   });
 };
 
-// handle update guideline info
+// update guideline info
 exports.update = function (req, res) {
 
   Guideline.findById(req.params.guideline_id, function (err, guideline) {
     if (err)
-    res.send(err);
+      res.send(err);
 
     guideline.title = req.body.title ? req.body.title : guideline.title;
     guideline.description = req.body.description;
 
     // save the guideline and check for errors
     guideline.save(function (err) {
-      if(err)
-      res.json(err);
+      if (err)
+        res.json(err);
       res.json({
         message: 'Guideline info updated',
         data: guideline
@@ -77,9 +74,9 @@ exports.delete = function (req, res) {
     _id: req.params.guideline_id
   }, function (err, guideline) {
     if (err)
-    res.send(err);
+      res.send(err);
     res.json({
-      status:"200",
+      status: "200",
       message: 'Guideline deleted'
     });
   });

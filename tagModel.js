@@ -1,7 +1,7 @@
 
 var mongoose = require('mongoose');
 
-// setup schema
+// setup tag schema
 var tagSchema = mongoose.Schema({
   name: {
     type: String,
@@ -13,7 +13,6 @@ var tagSchema = mongoose.Schema({
   }
 });
 
-// export tag model
 var Tag = module.exports = mongoose.model('tag', tagSchema);
 
 module.exports.get = function (callback, limit) {

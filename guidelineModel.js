@@ -1,7 +1,7 @@
 
 var mongoose = require('mongoose');
 
-// setup schema
+// setup guideline schema
 var glSchema = mongoose.Schema({
   title: {
     type: String,
@@ -17,7 +17,6 @@ var glSchema = mongoose.Schema({
   }
 });
 
-// export guideline model
 var Guideline = module.exports = mongoose.model('guideline', glSchema);
 
 module.exports.get = function (callback, limit) {

@@ -1,7 +1,7 @@
 
 var mongoose = require('mongoose');
 
-// setup schema
+// setup event schema
 var eventSchema = mongoose.Schema({
   title: {
     type: String,
@@ -25,7 +25,6 @@ var eventSchema = mongoose.Schema({
   }
 });
 
-// export event model
 var Event = module.exports = mongoose.model('event', eventSchema);
 
 module.exports.get = function (callback, limit) {

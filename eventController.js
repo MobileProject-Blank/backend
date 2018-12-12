@@ -1,11 +1,9 @@
 
-// import event model
 Event = require('./eventModel');
 
-// Handle index actions
 exports.index = function (req, res) {
   Event.get(function (err, events) {
-    if(err) {
+    if (err) {
       res.json({
         status: "500",
         message: err,
@@ -22,7 +20,6 @@ exports.index = function (req, res) {
 // handle create event actions
 exports.new = function (req, res) {
   var event = new Event();
-  // event.id = req.body.id;
   event.title = req.body.title ? req.body.title : event.title;
   event.date = req.body.date;
   event.description = req.body.description;
@@ -46,7 +43,7 @@ exports.new = function (req, res) {
 exports.view = function (req, res) {
   Event.findById(req.params.event_id, function (err, event) {
     if (err)
-    res.send(err);
+      res.send(err);
     res.json({
       message: 'Event details loading..',
       data: event
@@ -59,8 +56,7 @@ exports.update = function (req, res) {
 
   Event.findById(req.params.event_id, function (err, event) {
     if (err)
-    res.send(err);
-
+      res.send(err);
     event.title = req.body.title ? req.body.title : event.title;
     event.date = req.body.date;
     event.description = req.body.description;
@@ -69,8 +65,8 @@ exports.update = function (req, res) {
 
     // save the event and check for errors
     event.save(function (err) {
-      if(err)
-      res.json(err);
+      if (err)
+        res.json(err);
       res.json({
         message: 'Event info updated',
         data: event
@@ -79,15 +75,15 @@ exports.update = function (req, res) {
   });
 };
 
-// handle delete event
+// delete event
 exports.delete = function (req, res) {
   Event.remove({
     _id: req.params.event_id
   }, function (err, event) {
     if (err)
-    res.send(err);
+      res.send(err);
     res.json({
-      status:"200",
+      status: "200",
       message: 'Event deleted'
     });
   });
