@@ -48,3 +48,5 @@ Running BLANK back-end on port 8080
 /guidelines
 /guidelines/:guideline_id
 ```
+## Further development ideas:
+- make sure that everything in backend works so that website works without errors
